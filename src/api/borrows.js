@@ -1,0 +1,20 @@
+import api from './axios'
+
+export const borrowsApi = {
+  getAll: async (params = {}) => {
+    const response = await api.get('/borrows/', { params })
+    return response.data
+  },
+  getById: async (id) => {
+    const response = await api.get(`/borrows/${id}`)
+    return response.data
+  },
+  create: async (data) => {
+    const response = await api.post('/borrows/', data)
+    return response.data
+  },
+  returnBook: async (id) => {
+    const response = await api.post(`/borrows/${id}/return`)
+    return response.data
+  },
+}
